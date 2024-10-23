@@ -1,11 +1,19 @@
-const express = require('express');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import customer_support from "./component4/customer.service.js"
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Express app setup
 const app = express();
-const PORT = 8000;
+app.use(bodyParser.json());
+app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
+app.use('/api/customer-support', customer_support);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Start the server
+const port = 8000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
