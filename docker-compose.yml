@@ -1,0 +1,55 @@
+# version: "3.9"
+
+services:
+  web:
+    depends_on: 
+      - api
+    build: ./frontend
+    ports:
+      - 3000:3000
+    environment:
+      VITE_API_URL: http://localhost:8000
+    develop:
+      watch:
+        - path: ./frontend/package.json
+          action: rebuild
+        - path: ./frontend/package-lock.json
+          action: rebuild
+        - path: ./frontend
+          target: /app
+          action: sync
+
+  api:
+    depends_on: 
+      - db
+    build: ./backend
+    ports: 
+      - 8000:8000
+    environment: 
+      DB_URL: postgres://postgres:password@db:5432/postgres
+    develop:
+      watch:
+        - path: ./backend/package.json
+          action: rebuild
+        - path: ./backend/package-lock.json
+          action: rebuild
+        - path: ./backend
+          target: /app
+          action: sync
+
+  db:
+    build:
+      context: ./database/docker                 # Referencing the /database folder for the build
+      dockerfile: ./local_db.Dockerfile       # Dockerfile for the PostgreSQL setup
+    restart: always
+    ports:
+      - 5432:5432
+    env_file:
+      - ./database/.db.env                            # External file to manage environment variables
+    environment:
+      POSTGRES_DB: postgres
+    volumes:
+      - local_db:/var/lib/postgresql/data
+
+volumes:
+  local_db:
