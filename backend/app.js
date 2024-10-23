@@ -1,29 +1,26 @@
-// index.js
-const express = require('express');
-const cors = require('cors');
-const reviewsRouter = require('./reviews/reviews'); // Import the reviews routes
-require('dotenv').config({ path: '.env.local' });
-const { Pool } = require('pg'); 
 
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import reviewsRouter from './reviews/reviews.js';
+import customer_support from "./component4/customer.service.js"
+import dotenv from 'dotenv';
+dotenv.config();
+
+// Express app setup
 const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Middleware to parse JSON bodies
-app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Example route to check if the server is working
-app.get('/', (req, res) => {
-  res.send('Express and PostgreSQL server is running!');
-});
+app.use(cors());
 
-
-
+app.use('/api/customer-support', customer_support);
 // Use the reviews routes
 app.use('/api/reviews', reviewsRouter); // Mount the reviews router
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const port = 8000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });

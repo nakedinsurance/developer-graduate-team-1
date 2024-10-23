@@ -2,12 +2,12 @@
 
 ## 1. Developer Information
 
-- **Developer Name**: [Enter your name here]
-- **Team**: [Enter your team name here]
+- **Developer Name**:  Karabo Mofamere
+- **Team**: Team1
 
 ## 2. Component Description
 
-- **Component Name**: [Component name goes here]
+- **Component Name**: Reviews
 - **Component Purpose**:
   - [Provide a brief description of what this backend component does, its role in the overall system, and any important functionality it handles.]
 

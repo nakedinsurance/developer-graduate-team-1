@@ -1,9 +1,16 @@
 // routes/reviews.js
-const express = require('express');
-const router = express.Router();
-const { Pool } = require('pg');
-require('dotenv').config({ path: '.env.local' });
-const axios = require('axios');
+import express from 'express';
+import pkg from 'pg'; // Import pg as a default export
+import dotenv from 'dotenv';
+import axios from 'axios';
+
+dotenv.config({ path: '.env.local' });
+
+const { Pool } = pkg; // Destructure Pool from the default import
+const router = express.Router(); // Only declare the router once
+
+dotenv.config({ path: '.env.local' });
+
 
 // Create a new PostgreSQL client pool
 const pool = new Pool({
@@ -96,4 +103,4 @@ router.post('/', async (req, res) => {
   });
   
 
-module.exports = router; // Export the router
+export default router; // Export the router
