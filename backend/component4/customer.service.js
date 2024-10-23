@@ -5,22 +5,13 @@ const { Pool } = pkg;
 
 const router = express.Router();
 
-// PostgreSQL client setup
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'customer_support',
-  password: 'password',
-  port: 5432,
-});
-
 // OpenAI API setup
-const openai = new OpenAI({
-  apiKey: process.env.OpenAI,
-});
 
 // Define the route for handling customer support chat
 router.post('/', async (req, res) => {
+const openai = new OpenAI({
+  apiKey: process.env.OpenAI,
+});
   const { userMessage, sessionId } = req.body;
 
   try {

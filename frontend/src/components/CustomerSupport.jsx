@@ -74,7 +74,7 @@ function CustomerSupport() {
                   onChange={(e) => setInputValue(e.target.value)}
                 />
               </div>
-              <div className="btn">
+              <div className="">
                 <button onClick={handleInput}>
                   <i className="fas fa-paper-plane"></i>Send
                 </button>
