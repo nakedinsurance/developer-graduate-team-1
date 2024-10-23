@@ -8,8 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON bodies
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Example route to check if the server is working
 app.get('/', (req, res) => {
