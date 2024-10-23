@@ -14,6 +14,17 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+// Endpoint to fetch the products
+router.get('/products', async (req, res) => {
+
+  try {
+    const result = await pool.query('SELECT * FROM products');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 const classifyReview =  async (reviewText = "I like this product") => {
     const API_KEY = process.env.OPENAI_API_KEY; // Use your OpenAI API key
@@ -69,11 +80,11 @@ router.post('/', async (req, res) => {
   
     try {
       // Classify the review sentiment
-      const sentiment = await classifyReview(review_text);
+      const sentiment = await classifyReview(body);
       console.log(sentiment);
       // Query to insert a new review into the reviews table
       const result = await pool.query(
-        'INSERT INTO reviews (body, review_text, sentiment) VALUES ($1, $2, $3) RETURNING *',
+        'INSERT INTO reviews (product_id, body,sentiment) VALUES ($1, $2, $3) RETURNING *',
         [product_id, body, sentiment] // Include sentiment in the database insert
       );
   
