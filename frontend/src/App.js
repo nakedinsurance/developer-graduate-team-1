@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/recommended-products" element={<RecommendedProducts customerId="cdad3ffd-f5d6-488e-b76f-a92a151b7c72" />
 } />
 
-      <Route path="/" element={<CustomerSupport />} />
+      <Route path="/customer-support" element={<CustomerSupport />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 

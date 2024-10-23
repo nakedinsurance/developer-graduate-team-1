@@ -1,6 +1,7 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase'; // Import the auth object from firebase.js
 import './LoginRegister.css';
 
@@ -8,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,7 +18,7 @@ const Login = () => {
       // Authenticate the user
       await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in');
-      // Redirect to dashboard or any protected route
+      navigate('/recommended-products'); // Use navigate function to redirect
     } catch (err) {
       // Updated error handling
       if (err.code === 'auth/wrong-password') {
