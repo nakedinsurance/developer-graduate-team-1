@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const reviewsRouter = require('./reviews/reviews'); // Import the reviews routes
 require('dotenv').config({ path: '.env.local' });
+const { Pool } = require('pg'); 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,6 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('Express and PostgreSQL server is running!');
 });
+
+
 
 // Use the reviews routes
 app.use('/api/reviews', reviewsRouter); // Mount the reviews router
