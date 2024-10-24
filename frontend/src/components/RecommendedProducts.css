@@ -1,51 +1,55 @@
-/* RecommendedProducts.css */
+/* Container for the recommended products section */
+.recommended-products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-.recommended-products {
-    max-width: 800px; /* Limit width for better readability */
-    margin: 20px auto; /* Center the container */
-    padding: 20px; /* Add padding for inner spacing */
-    background-color: #f9f9f9; /* Light gray background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  
-  h2 {
-    text-align: center; /* Center the heading */
-    color: #333; /* Darker text color for readability */
-    font-family: Arial, sans-serif; /* Font style */
-  }
-  
-  .error-message {
-    color: red; /* Red color for error messages */
-    text-align: center; /* Center error message */
-    font-weight: bold; /* Bold text for emphasis */
-  }
-  
-  ul {
-    list-style-type: none; /* Remove default bullet points */
-    padding: 0; /* Remove padding */
-  }
-  
-  li {
-    border: 1px solid #ddd; /* Light border for each product card */
-    border-radius: 5px; /* Rounded corners for product cards */
-    padding: 15px; /* Padding inside product cards */
-    margin: 10px 0; /* Space between product cards */
-    background-color: #fff; /* White background for product cards */
-    transition: box-shadow 0.3s; /* Smooth transition for hover effect */
-  }
-  
-  li:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow on hover for effect */
-  }
-  
-  h3 {
-    margin: 0 0 10px 0; /* Space below the product name */
-    color: #007bff; /* Blue color for product names */
-  }
-  
-  p {
-    margin: 5px 0; /* Space between paragraphs */
-    color: #555; /* Gray color for additional text */
-  }
-  
+.recommended-products-container h2 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Grid for displaying the products */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Smaller cards with 150px min size */
+  gap: 10px; /* Reduced gap between product cards */
+}
+
+/* Individual product card styling */
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px; /* Further reduced padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effects on product card */
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3 {
+  font-size: 16px; /* Smaller font size for product titles */
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.product-card p {
+  font-size: 12px; /* Further reduced font size for description and details */
+  color: #555;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+}

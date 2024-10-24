@@ -1,17 +1,16 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database"; // For Realtime Database
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCd0Ix_tPg42N3UzzvZ_zTkHxAQ9KRkdoo",
-    authDomain: "developer-graduate-team-1.firebaseapp.com",
-    databaseURL: "https://developer-graduate-team-1-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "developer-graduate-team-1",
-    storageBucket: "developer-graduate-team-1.appspot.com",
-    messagingSenderId: "147900190677",
-    appId: "1:147900190677:web:71049698dc1f55a8cc375c",
-    measurementId: "G-X78VV0H6YG"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
