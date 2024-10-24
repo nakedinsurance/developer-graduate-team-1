@@ -11,7 +11,7 @@ const ProductDetails = () => {
     const fetchProductDetails = async () => {
       try {
         // Fetch product details for the specific product ID
-        const productResponse = await axios.get(`http://localhost:5000/api/reviews/products/`);
+        const productResponse = await axios.get(`http://localhost:8000/api/reviews/products/`);
         setProduct(productResponse.data); // Set product data
       } catch (err) {
         setError('Failed to fetch product details.');
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     const fetchReviews = async () => {
       try {
         // Fetch reviews for the product
-        const reviewsResponse = await axios.get(`http://localhost:5000/api/reviews/all`);
+        const reviewsResponse = await axios.get(`http://localhost:8000/api/reviews/all`);
         setReviews(reviewsResponse.data);
       } catch (err) {
         setError('Failed to fetch reviews.');

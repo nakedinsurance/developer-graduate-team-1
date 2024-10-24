@@ -15,7 +15,7 @@ const ReviewForm = ({ productId='f966934e-883e-4c6f-ab34-aeeeb764ccc7' }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/reviews', {
+      const response = await axios.post('http://localhost:8000/api/reviews/all', {
         body,
         product_id: productId, // Sending the product ID
       });
