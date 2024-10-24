@@ -1,6 +1,9 @@
-// firebase.js
 const admin = require('firebase-admin');
-const serviceAccount = require('./firebase-service-account-key.json'); // Replace with the actual path
+const path = require('path');
+require('dotenv').config(); // Load environment variables
+
+const serviceAccountPath = process.env.FIREBASE_SERVICE_ACCOUNT_KEY_PATH; // Load the path from the .env file
+const serviceAccount = require(path.resolve(serviceAccountPath)); // Dynamically load the key file
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
