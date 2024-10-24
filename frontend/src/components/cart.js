@@ -1,24 +1,34 @@
 import React from 'react';
 import './cart.css'
-import '/'
 
 const Cart = () => {
-    var items = [['cat', 1, 20], ['lo', 2, 60]]
+    const data = require('./db.json')
+    const items = [];
+    let quantities = [5, 6, 2, 1]
 
-    const total = items.reduce((sum, item) => sum + item[2] * item[1], 0);
+    for (let i = 0; i < 10; i++) {
+        // items.push()
+        items.push(data["product"][Math.floor(Math.random()*90)])
+    }
+
+    const total = items.reduce((sum, item) => sum + Number(item["price"].replace(/,/g, '')) * quantities[Math.floor(Math.random()*4)], 0);
+
     return (
 
         <div>
             <h2>Your Cart</h2>
             {items.map((item, index) => (
                 <div key={index}>
-                <p>{item[0]} Quantity: {item[1]} Price: R{item[2]}</p>
+                <p>{item["name"]} Quantity: {quantities[Math.floor(Math.random()*4)]} Price: R{item["price"]}</p>
         </div>
          ))}
+
+         
              <div>
 <br></br>
         <p>Total: R{total.toFixed(2)}</p>
         </div>
+        <button a="checkout.js" > Checkout</button>
         </div>
     );
 };

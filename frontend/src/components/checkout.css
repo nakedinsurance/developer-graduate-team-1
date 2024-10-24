@@ -26,7 +26,7 @@
     color: white;
   }
   
-#input {
+.input {
     padding: 10px;
     padding-right: 1000px;
     margin: 10px 0px;
@@ -39,15 +39,30 @@ div {
     justify-content: center;
 }
 
-#date-cvv input {    
+#date {    
     padding: 10px;
-    padding-right: 430px;
+    padding-right: 460px;
     margin: 10px;
 }
+
+#cvv {
+  padding: 10px;
+  padding-right: 510px;
+  margin: 10px;}
 
 button {
     margin-top: 50px;
     padding: 20px 400px;
+}
+
+#code {
+  padding-right: 1107px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #date-cvv {
