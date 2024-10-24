@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 import './LoginRegister.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ const Register = () => {
       // Create new user
       await createUserWithEmailAndPassword(auth, email, password);
       console.log('User registered');
-      // Redirect to login or dashboard
+      
+      navigate('/recommended-products'); 
     } catch (err) {
       console.error('Registration error:', err);
       setError('Error creating account');
